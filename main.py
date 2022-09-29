@@ -1,81 +1,99 @@
-zug = 0
-def papier():
-    basic.show_leds("""
+let zug2 = 0
+input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
+    basic.showString("" + input.temperature())
+})
+function papier2 () {
+    basic.showLeds(`
         . . . . .
         . . . . .
         . . # . .
         . . . . .
         . . . . .
-        """)
-    basic.show_leds("""
+        `)
+    basic.showLeds(`
         . . . . .
         . # # # .
         . # # # .
         . # # # .
         . . . . .
-        """)
-    basic.show_leds("""
+        `)
+    basic.showLeds(`
         # # # # #
         # # # # #
         # # # # #
         # # # # #
         # # # # #
-        """)
-
-def on_gesture_shake():
-    global zug
-    basic.clear_screen()
-    basic.pause(200)
-    zug = randint(1, 3)
-    if zug == 1:
-        schere()
-    elif zug == 2:
-        papier()
-    else:
-        stein()
-input.on_gesture(Gesture.SHAKE, on_gesture_shake)
-
-def stein():
-    basic.show_leds("""
+        `)
+}
+input.onButtonEvent(Button.B, input.buttonEventClick(), function () {
+    basic.showString("" + input.lightLevel())
+})
+input.onGesture(Gesture.Shake, function () {
+    basic.clearScreen()
+    basic.pause(1000)
+    zug2 = randint(1, 3)
+    if (zug2 == 1) {
+        stein2()
+    } else if (zug2 == 2) {
+        schere2()
+    } else {
+        papier2()
+    }
+})
+function stein2 () {
+    basic.showLeds(`
         . . . . .
         . # # # .
         # # # # #
         . # # # .
         . . . . .
-        """)
-    basic.show_leds("""
+        `)
+    basic.showLeds(`
         . . # . .
         . # # # .
         . # # # .
         . # # # .
         . . # . .
-        """)
-    basic.show_leds("""
+        `)
+    basic.showLeds(`
         . . . . .
         . # # # .
         # # # # #
         . # # # .
         . . . . .
-        """)
-def schere():
-    basic.show_leds("""
+        `)
+}
+function schere2 () {
+    basic.showLeds(`
         # . . . #
         . # . # .
         . . # . .
         # # . # #
         # # . # #
-        """)
-    basic.show_leds("""
+        `)
+    basic.showLeds(`
         . . # . .
         . . # . .
         . . # . .
-        # # . # #
-        # # . # #
-        """)
-    basic.show_leds("""
+        . # # # .
+        . # # # .
+        `)
+    basic.showLeds(`
         # . . . #
         . # . # .
         . . # . .
         # # . # #
         # # . # #
-        """)
+        `)
+}
+basic.forever(function () {
+    if (input.pinIsPressed(TouchPin.P0)) {
+        music.playTone(131, music.beat(BeatFraction.Sixteenth))
+    } else if (input.pinIsPressed(TouchPin.P1)) {
+        music.playTone(262, music.beat(BeatFraction.Sixteenth))
+    } else if (input.pinIsPressed(TouchPin.P2)) {
+        music.playTone(523, music.beat(BeatFraction.Sixteenth))
+    } else if (input.pinIsPressed(TouchPin.P3)) {
+        music.playTone(988, music.beat(BeatFraction.Sixteenth))
+    }
+})

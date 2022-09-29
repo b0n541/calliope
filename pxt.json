@@ -3,7 +3,8 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "radio": "*"
+        "radio": "*",
+        "PIN für Klavier hinzugefügt, Temperaturmessung auf Knopf A": "github:b0n541/calliope#0750c861a7d15363e612b3ccefe82b6e5039d31e"
     },
     "files": [
         "main.blocks",

@@ -1,8 +1,8 @@
-let zug = 0
+let zug2 = 0
 input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
-    basic.showString("" + (input.temperature()))
+    basic.showString("" + input.temperature())
 })
-function papier () {
+function papier2 () {
     basic.showLeds(`
         . . . . .
         . . . . .
@@ -26,21 +26,21 @@ function papier () {
         `)
 }
 input.onButtonEvent(Button.B, input.buttonEventClick(), function () {
-    basic.showString("" + (input.lightLevel()))
+    basic.showString("" + input.lightLevel())
 })
 input.onGesture(Gesture.Shake, function () {
     basic.clearScreen()
     basic.pause(1000)
-    zug = randint(1, 3)
-    if (zug == 1) {
-        schere()
-    } else if (zug == 2) {
-        papier()
+    zug2 = randint(1, 3)
+    if (zug2 == 1) {
+        stein2()
+    } else if (zug2 == 2) {
+        schere2()
     } else {
-        stein()
+        papier2()
     }
 })
-function stein () {
+function stein2 () {
     basic.showLeds(`
         . . . . .
         . # # # .
@@ -63,7 +63,7 @@ function stein () {
         . . . . .
         `)
 }
-function schere () {
+function schere2 () {
     basic.showLeds(`
         # . . . #
         . # . # .
