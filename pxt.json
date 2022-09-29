@@ -1,5 +1,5 @@
 {
-    "name": "123",
+    "name": "PIN für Klavier hinzugefügt, Temperaturmessung auf Knopf A",
     "description": "",
     "dependencies": {
         "core": "*",
@@ -14,6 +14,10 @@
     "testFiles": [
         "test.ts"
     ],
+    "targetVersions": {
+        "target": "4.0.29",
+        "targetId": "calliopemini"
+    },
     "supportedTargets": [
         "calliopemini"
     ],
