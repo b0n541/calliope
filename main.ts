@@ -1,4 +1,21 @@
 let zug2 = 0
+function sehrHoch () {
+    basic.showLeds(`
+        . . . . .
+        # # # # .
+        # # # # #
+        # . . . #
+        # . . . #
+        `)
+    music.playTone(988, music.beat(BeatFraction.Sixteenth))
+    basic.showLeds(`
+        . . . . .
+        # # # # #
+        # # # # #
+        # . . . #
+        # . . . #
+        `)
+}
 input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
     basic.showString("" + input.temperature())
 })
@@ -40,6 +57,57 @@ input.onGesture(Gesture.Shake, function () {
         papier2()
     }
 })
+function tief () {
+    basic.showLeds(`
+        . . . . .
+        # . # # #
+        # # # # #
+        # . . . #
+        # . . . #
+        `)
+    music.playTone(131, music.beat(BeatFraction.Sixteenth))
+    basic.showLeds(`
+        . . . . .
+        # # # # #
+        # # # # #
+        # . . . #
+        # . . . #
+        `)
+}
+function hoch () {
+    basic.showLeds(`
+        . . . . .
+        # # # . #
+        # # # # #
+        # . . . #
+        # . . . #
+        `)
+    music.playTone(523, music.beat(BeatFraction.Sixteenth))
+    basic.showLeds(`
+        . . . . .
+        # # # # #
+        # # # # #
+        # . . . #
+        # . . . #
+        `)
+}
+function mittel () {
+    basic.showLeds(`
+        . . . . .
+        # # . # #
+        # # # # #
+        # . . . #
+        # . . . #
+        `)
+    music.playTone(262, music.beat(BeatFraction.Sixteenth))
+    basic.showLeds(`
+        . . . . .
+        # # # # #
+        # # # # #
+        # . . . #
+        # . . . #
+        `)
+}
 function stein2 () {
     basic.showLeds(`
         . . . . .
@@ -88,12 +156,12 @@ function schere2 () {
 }
 basic.forever(function () {
     if (input.pinIsPressed(TouchPin.P0)) {
-        music.playTone(131, music.beat(BeatFraction.Sixteenth))
+        tief()
     } else if (input.pinIsPressed(TouchPin.P1)) {
-        music.playTone(262, music.beat(BeatFraction.Sixteenth))
+        mittel()
     } else if (input.pinIsPressed(TouchPin.P2)) {
-        music.playTone(523, music.beat(BeatFraction.Sixteenth))
+        hoch()
     } else if (input.pinIsPressed(TouchPin.P3)) {
-        music.playTone(988, music.beat(BeatFraction.Sixteenth))
+        sehrHoch()
     }
 })
