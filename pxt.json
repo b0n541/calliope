@@ -1,5 +1,5 @@
 {
-    "name": "PIN für Klavier hinzugefügt, Temperaturmessung auf Knopf A",
+    "name": "Spielen können über Knopf A und B gewählt werden",
     "description": "",
     "dependencies": {
         "core": "*",

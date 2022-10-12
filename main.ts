@@ -1,3 +1,4 @@
+let spiel = 0
 let zug2 = 0
 function sehrHoch () {
     basic.showLeds(`
@@ -8,16 +9,9 @@ function sehrHoch () {
         # . . . #
         `)
     music.playTone(988, music.beat(BeatFraction.Sixteenth))
-    basic.showLeds(`
-        . . . . .
-        # # # # #
-        # # # # #
-        # . . . #
-        # . . . #
-        `)
 }
 input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
-    basic.showString("" + input.temperature())
+    spiel = 1
 })
 function papier2 () {
     basic.showLeds(`
@@ -43,18 +37,20 @@ function papier2 () {
         `)
 }
 input.onButtonEvent(Button.B, input.buttonEventClick(), function () {
-    basic.showString("" + input.lightLevel())
+    spiel = 2
 })
 input.onGesture(Gesture.Shake, function () {
-    basic.clearScreen()
-    basic.pause(1000)
-    zug2 = randint(1, 3)
-    if (zug2 == 1) {
-        stein2()
-    } else if (zug2 == 2) {
-        schere2()
-    } else {
-        papier2()
+    if (spiel == 1) {
+        basic.clearScreen()
+        basic.pause(1000)
+        zug2 = randint(1, 3)
+        if (zug2 == 1) {
+            stein2()
+        } else if (zug2 == 2) {
+            schere2()
+        } else {
+            papier2()
+        }
     }
 })
 function tief () {
@@ -66,13 +62,6 @@ function tief () {
         # . . . #
         `)
     music.playTone(131, music.beat(BeatFraction.Sixteenth))
-    basic.showLeds(`
-        . . . . .
-        # # # # #
-        # # # # #
-        # . . . #
-        # . . . #
-        `)
 }
 function hoch () {
     basic.showLeds(`
@@ -83,13 +72,6 @@ function hoch () {
         # . . . #
         `)
     music.playTone(523, music.beat(BeatFraction.Sixteenth))
-    basic.showLeds(`
-        . . . . .
-        # # # # #
-        # # # # #
-        # . . . #
-        # . . . #
-        `)
 }
 function mittel () {
     basic.showLeds(`
@@ -100,13 +82,6 @@ function mittel () {
         # . . . #
         `)
     music.playTone(262, music.beat(BeatFraction.Sixteenth))
-    basic.showLeds(`
-        . . . . .
-        # # # # #
-        # # # # #
-        # . . . #
-        # . . . #
-        `)
 }
 function stein2 () {
     basic.showLeds(`
@@ -155,13 +130,23 @@ function schere2 () {
         `)
 }
 basic.forever(function () {
-    if (input.pinIsPressed(TouchPin.P0)) {
-        tief()
-    } else if (input.pinIsPressed(TouchPin.P1)) {
-        mittel()
-    } else if (input.pinIsPressed(TouchPin.P2)) {
-        hoch()
-    } else if (input.pinIsPressed(TouchPin.P3)) {
-        sehrHoch()
+    if (spiel == 2) {
+        if (input.pinIsPressed(TouchPin.P0)) {
+            tief()
+        } else if (input.pinIsPressed(TouchPin.P1)) {
+            mittel()
+        } else if (input.pinIsPressed(TouchPin.P2)) {
+            hoch()
+        } else if (input.pinIsPressed(TouchPin.P3)) {
+            sehrHoch()
+        } else {
+            basic.showLeds(`
+                . . . . .
+                # # # # #
+                # # # # #
+                # . . . #
+                # . . . #
+                `)
+        }
     }
 })
