@@ -1,5 +1,5 @@
 {
-    "name": "Spielen können über Knopf A und B gewählt werden",
+    "name": "Starthinweis hinzugefügt",
     "description": "",
     "dependencies": {
         "core": "*",

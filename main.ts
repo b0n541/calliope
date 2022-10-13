@@ -1,5 +1,3 @@
-let spiel = 0
-let zug2 = 0
 function sehrHoch () {
     basic.showLeds(`
         . . . . .
@@ -12,6 +10,7 @@ function sehrHoch () {
 }
 input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
     spiel = 1
+    basic.clearScreen()
 })
 function papier2 () {
     basic.showLeds(`
@@ -38,6 +37,7 @@ function papier2 () {
 }
 input.onButtonEvent(Button.B, input.buttonEventClick(), function () {
     spiel = 2
+    basic.clearScreen()
 })
 input.onGesture(Gesture.Shake, function () {
     if (spiel == 1) {
@@ -129,6 +129,9 @@ function schere2 () {
         # # . # #
         `)
 }
+let zug2 = 0
+let spiel = 0
+basic.showString("Knopf A oder B drücken")
 basic.forever(function () {
     if (spiel == 2) {
         if (input.pinIsPressed(TouchPin.P0)) {
